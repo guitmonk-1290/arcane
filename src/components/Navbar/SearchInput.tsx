@@ -11,10 +11,9 @@ const SearchInput:React.FC<SearchInputProps> = () => {
     return (
         <Flex flexGrow={1} mr={2} align='center' ml={2}>
             <InputGroup>
-                <InputLeftElement 
-                pointerEvents='none'
-                children={<SearchIcon color='gray.400' mb={1}/>}
-                />
+                <InputLeftElement>
+                    <SearchIcon color='gray.400' mb={1}/>
+                </InputLeftElement>
                 <Input 
                 fontSize='10pt' 
                 placeholder='Search for topics' 

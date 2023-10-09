@@ -319,8 +319,9 @@ const PostModal: React.FC<PostModalProps> = ({ user, firestore }) => {
                             marginRight='auto'
                         >
                             {
-                                selectedFiles.map((image) => (
+                                selectedFiles.map((image, index) => (
                                     <Image
+                                        key={image}
                                         src={image}
                                         maxWidth='40px'
                                         maxHeight='40px'
