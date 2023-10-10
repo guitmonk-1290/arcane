@@ -44,7 +44,9 @@ const useDirectory = () => {
                 }
             }))
         }
-    }, [communityStateValue.currentCommunity])
+    }, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [communityStateValue.currentCommunity])
 
     return {
         directoryState,

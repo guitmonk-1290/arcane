@@ -89,7 +89,9 @@ const PostItem: React.FC<PostItemProps> = ({
         if (carousel) {
             setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
         }
-    }, [])
+    }, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [])
 
     return (
         <Flex
@@ -165,6 +167,7 @@ const PostItem: React.FC<PostItemProps> = ({
                                             {
                                                 post.communityImageURL ? (
                                                     <Image
+                                                        alt='Community Image'
                                                         src={post.communityImageURL}
                                                         borderRadius='full'
                                                         boxSize='18px'
@@ -218,11 +221,13 @@ const PostItem: React.FC<PostItemProps> = ({
                                     dragConstraints={{ right: 0, left: -width }}
                                 >
                                     {post.imageURL.map((img, index) => (
-                                        <motion.div className='item'>
+                                        <motion.div className='item'
+                                        key={post.id}
+                                        >
                                             {loadingImage && (
                                                 <Skeleton height='200px' width='100%' borderRadius={4} />
                                             )}
-                                            <img
+                                            <Image
                                                 key={index}
                                                 src={img}
                                                 alt=''

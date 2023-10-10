@@ -63,7 +63,9 @@ const SignUp:React.FC<SignUpProps> = () => {
         if (user) {
             createUserDocument(user.user);
         }
-    }, [user])
+    }, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [user])
 
     return (
         <form onSubmit={onSubmit}>

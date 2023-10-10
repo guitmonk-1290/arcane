@@ -177,7 +177,9 @@ const usePosts = () => {
             return;
         }
         getCommunityPostVote(currentCommunity?.id);
-    }, [user, currentCommunity])
+    }, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [user, currentCommunity])
 
     return {
         postStateValue,

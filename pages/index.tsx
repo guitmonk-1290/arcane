@@ -117,11 +117,15 @@ export default function Home() {
 
   useEffect(() => {
     if (communityStateValue.fetchedSnippets) buildUserHomeFeed();
-  }, [communityStateValue.fetchedSnippets])
+  }, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [communityStateValue.fetchedSnippets])
 
   useEffect(() => {
     if (!user && !loadingUser) buildNoUserHomeFeed();
-  }, [user, loadingUser])
+  }, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [user, loadingUser])
 
   useEffect(() => {
     if (user && postStateValue.posts.length) getUserPostVotes();
@@ -133,7 +137,9 @@ export default function Home() {
         postVotes: []
       }))
     }
-  }, [user, postStateValue.posts])
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps 
+  [user, postStateValue.posts])
 
   return (
     <PageContent>

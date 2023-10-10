@@ -30,7 +30,9 @@ const OAuthButtons:React.FC<OAuthButtonsProps> = () => {
         if (user) {
             createUserDocument(user.user);
         }
-    }, [user])
+    }, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [user])
     
     return (
         <Flex direction='column' width='100%' mb={4}>
@@ -39,7 +41,11 @@ const OAuthButtons:React.FC<OAuthButtonsProps> = () => {
             mb={2}
             isLoading={loading}
             onClick={() => signInWithGoogle()} >
-                <Image src='/images/google.png' height='30px' mr={2}/>
+                <Image
+                    alt='Sign In with Google' 
+                    src='/images/google.png' 
+                    height='30px' mr={2}
+                />
                 <Text color='black'>Continue with Google</Text>
             </Button>
             <Button variant='oauth' mb={2}

@@ -33,6 +33,7 @@ const Header:React.FC<HeaderProps> = ({ communityData }) => {
                 {
                     banner && 
                         <Image 
+                            alt='Community Banner'
                             width='100%'
                             src={banner}
                             height='110%'

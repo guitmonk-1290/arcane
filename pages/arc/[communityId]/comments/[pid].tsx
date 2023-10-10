@@ -28,25 +28,27 @@ const PostPage:React.FC = () => {
 
     const { communityStateValue } = useCommunityData();
 
-    const fetchPost = async (postId: string) => {
-        try {
-            const postDocRef = doc(firestore, 'posts', postId);
-            const postDoc = await getDoc(postDocRef);
-            setPostStateValue(prev => ({
-                ...prev,
-                selectedPost: { 
-                    id: postDoc.id, ...postDoc.data() 
-                } as Post
-            }))
-        } catch (error) {
-            console.log("fetchPost error: ", error);
-        }
-    };
+    
 
     useEffect(() => {
         const {pid} = router.query;
 
         if (pid && !postStateValue.selectedPost) {
+            const fetchPost = async (postId: string) => {
+                try {
+                    const postDocRef = doc(firestore, 'posts', postId);
+                    const postDoc = await getDoc(postDocRef);
+                    setPostStateValue(prev => ({
+                        ...prev,
+                        selectedPost: { 
+                            id: postDoc.id, ...postDoc.data() 
+                        } as Post
+                    }))
+                } catch (error) {
+                    console.log("fetchPost error: ", error);
+                }
+            };
+            
             fetchPost(pid as string);
         }
     }, [router.query, postStateValue.selectedPost])

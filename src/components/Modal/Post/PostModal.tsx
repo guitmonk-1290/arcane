@@ -321,6 +321,7 @@ const PostModal: React.FC<PostModalProps> = ({ user, firestore }) => {
                             {
                                 selectedFiles.map((image, index) => (
                                     <Image
+                                        alt=''
                                         key={image}
                                         src={image}
                                         maxWidth='40px'

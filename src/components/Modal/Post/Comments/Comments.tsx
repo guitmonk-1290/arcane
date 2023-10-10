@@ -146,7 +146,9 @@ const Comments: React.FC<CommentsProps> = ({
     useEffect(() => {
         if (!selectedPost) return;
         getPostComments();
-    }, [selectedPost])
+    }, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedPost])
 
     return (
         <Box

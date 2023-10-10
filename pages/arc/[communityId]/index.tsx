@@ -21,11 +21,12 @@ type CommunityPageProps = {
 };
 
 const CommunityPage: React.FC<CommunityPageProps> = ({ communityData }) => {
-    const setCommunityStateValue = useSetRecoilState(communityState);
+
     const communityStateValue = useRecoilValue(communityState);
     console.log('community state value: ', communityStateValue);
 
     useEffect(() => {
+        const setCommunityStateValue = useSetRecoilState(communityState);
         setCommunityStateValue((prev) => ({
             ...prev,
             currentCommunity: communityData

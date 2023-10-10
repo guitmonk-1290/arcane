@@ -152,7 +152,9 @@ const useCommunityData = () => {
         console.log("getting snippets...");
         // console.log("USER: ", user);
         getMySnippets();
-    }, [user])
+    }, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [user])
 
     useEffect(() => {
         const { communityId } = router.query;
@@ -160,7 +162,9 @@ const useCommunityData = () => {
         if (communityId && !communityStateValue.currentCommunity) {
             getCommunityData(communityId as string);
         }
-    }, [router.query, communityStateValue.currentCommunity])
+    }, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [router.query, communityStateValue.currentCommunity])
 
     return {
         // returns data and functions accessible by other components
