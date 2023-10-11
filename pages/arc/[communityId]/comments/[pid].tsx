@@ -72,7 +72,7 @@ const PostPage:React.FC = () => {
                     user={user as User} 
                     selectedPost={postStateValue.selectedPost}
                     communityId={postStateValue.selectedPost?.communityId as string}
-                    />
+                />
             </>
             <>
                     { communityStateValue.currentCommunity && <About communityData={communityStateValue.currentCommunity} />}

@@ -1,9 +1,10 @@
 import AuthButtons from '@/src/components/Navbar/RightContent/AuthButtons';
 import { Flex, Textarea, Button, Text, Icon } from '@chakra-ui/react';
-import {GrEmoji} from "react-icons/gr"
+import { GrEmoji } from "react-icons/gr"
 import { User } from 'firebase/auth';
 import React from 'react';
 import { color } from 'framer-motion';
+import SmAuthButtons from '@/src/components/Navbar/RightContent/SmAuthButtons';
 
 type CommentInputProps = {
     comment: string;
@@ -20,6 +21,10 @@ const CommentInput: React.FC<CommentInputProps> = ({
     createLoading,
     onCreateComment
 }) => {
+
+    function setAuthModalState(arg0: { open: boolean; view: string; }): void {
+        throw new Error('Function not implemented.');
+    }
 
     return (
         <Flex direction="column" position="relative" mt={2}>
@@ -56,15 +61,15 @@ const CommentInput: React.FC<CommentInputProps> = ({
                         p="6px 8px"
                         borderRadius="0px 0px 4px 4px"
                     >
-                        <Icon 
+                        <Icon
                             as={GrEmoji}
                             color='gray.400'
-                            fontSize={25} 
+                            fontSize={25}
                             mr={2}
                             mt='auto'
                             cursor='pointer'
                             _hover={{ color: 'blue.400' }}
-                            onClick={()=>{}}
+                            onClick={() => { }}
                         />
                         <Button
                             height="26px"
@@ -86,6 +91,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
                     p={4}
                 >
                     <Text fontWeight={600} mr={4}>Log in or sign up to leave a comment</Text>
+                    <SmAuthButtons />
                     <AuthButtons />
                 </Flex>
             )}
