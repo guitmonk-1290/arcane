@@ -89,9 +89,9 @@ const PostItem: React.FC<PostItemProps> = ({
         if (carousel) {
             setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
         }
-    }, 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [])
+    },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [])
 
     return (
         <Flex
@@ -107,7 +107,7 @@ const PostItem: React.FC<PostItemProps> = ({
                 direction='column'
                 align='center'
                 bg={singlePostPage ? 'none' : 'gray.100'}
-                p={2}
+                p={2.5}
                 width='10%'
                 borderRadius={singlePostPage ? '0' : '3px 0px 0px 3px'}
             >
@@ -120,7 +120,7 @@ const PostItem: React.FC<PostItemProps> = ({
                             'blue.600' :
                             'blue.800'
                     }
-                    fontSize={26}
+                    fontSize={28}
                     onClick={(event) => onVote(event, post, 1, post.communityId)}
                     cursor='pointer'
                 />
@@ -134,7 +134,7 @@ const PostItem: React.FC<PostItemProps> = ({
                             'gray.800' :
                             'gray.600'
                     }
-                    fontSize={26}
+                    fontSize={28}
                     onClick={(event) => onVote(event, post, -1, post.communityId)}
                     cursor='pointer'
                 />
@@ -149,63 +149,72 @@ const PostItem: React.FC<PostItemProps> = ({
                         <Text mr={2} fontSize={14}>{error}</Text>
                     </Alert>
                 )}
-                <Stack spacing={1} p="10px">
-                    <Stack
-                        direction='row'
-                        spacing={0.6}
-                        align='center'
-                        fontSize='9pt'
-                    >
-                        <Flex
+                <Stack spacing={1} p="4px" fontFamily='helvetica' >
+                    <Flex p='8px' bgColor='gray.100'
+                            borderRadius='5px'>
+                        <Stack
                             direction='row'
-                            mt={1}
+                            spacing={0.6}
+                            align='center'
+                            fontSize='9pt'
+                            
                         >
-                            <Flex direction='row' mt='-1px'>
-                                {
-                                    homePage && (
-                                        <>
-                                            {
-                                                post.communityImageURL ? (
-                                                    <Image
-                                                        alt='Community Image'
-                                                        src={post.communityImageURL}
-                                                        borderRadius='full'
-                                                        boxSize='18px'
-                                                        mr={2}
-                                                    />
-                                                ) : (
-                                                    <Icon
-                                                        as={BiGame}
-                                                        fontSize='18pt'
-                                                        mr={1}
-                                                        mt='-1px'
-                                                        color='blue.500'
-                                                    />
-                                                )
-                                            }
-                                            <Link href={`arc/${post.communityId}`}>
-                                                <Text
-                                                    mr={4}
-                                                    fontWeight={600}
-                                                    fontSize='10pt'
-                                                    _hover={{ textDecoration: "underline" }}
-                                                    onClick={event => event.stopPropagation()}
-                                                >{`arc/${post.communityId}`}</Text>
-                                            </Link>
-                                        </>
-                                    )
-                                }
-                            </Flex>
+                            <Flex
+                                direction='row'
+                                mt={1}
+                                flexWrap='wrap'
+                            >
+                                <Flex direction='row' mt='-4px'>
+                                    {
+                                        homePage && (
+                                            <>
+                                                {
+                                                    post.communityImageURL ? (
+                                                        <Image
+                                                            alt='Community Image'
+                                                            src={post.communityImageURL}
+                                                            borderRadius='full'
+                                                            boxSize='18px'
+                                                            mr={2}
+                                                        />
+                                                    ) : (
+                                                        <Icon
+                                                            as={BiGame}
+                                                            fontSize='18pt'
+                                                            mr={1}
+                                                            mt='-1px'
+                                                            color='blue.500'
+                                                        />
+                                                    )
+                                                }
+                                                <Link href={`arc/${post.communityId}`}>
+                                                    <Text
+                                                        mr={4}
+                                                        fontWeight={600}
+                                                        fontSize='10pt'
+                                                        _hover={{ textDecoration: "underline" }}
+                                                        onClick={event => event.stopPropagation()}
+                                                    >{`arc/${post.communityId}`}</Text>
+                                                </Link>
+                                            </>
+                                        )
+                                    }
+                                </Flex>
 
-                            <Text>Posted by</Text>
-                            <Text ml={1} color='blue.400' fontWeight='bold'>
-                                {post.creatorDisplayName}
-                            </Text>
-                            <Text ml={2}>
-                                {moment(new Date(post.createdAt?.seconds * 1000)).fromNow()}
-                            </Text>
-                        </Flex>
-                    </Stack>
+                                <Flex>
+                                    <Text>Posted by</Text>
+                                    <Text ml={1} color='blue.400' fontWeight='bold'>
+                                        {post.creatorDisplayName}
+                                    </Text>
+                                    <Text ml={2}>
+                                        {moment(new Date(post.createdAt?.seconds * 1000)).fromNow()}
+                                    </Text>
+                                </Flex>
+
+                            </Flex>
+                        </Stack>
+                    </Flex>
+
                     <Text fontSize='12pt' fontWeight={600}>
                         {post.title}
                     </Text>
@@ -222,7 +231,7 @@ const PostItem: React.FC<PostItemProps> = ({
                                 >
                                     {post.imageURL.map((img, index) => (
                                         <motion.div className='item'
-                                        key={post.id}
+                                            key={post.id}
                                         >
                                             {loadingImage && (
                                                 <Skeleton height='200px' width='100%' borderRadius={4} />

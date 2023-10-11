@@ -19,13 +19,16 @@ const Navbar:React.FC = () => {
             bg="white"
             height='44px' 
             padding='6px 12px'
-            minWidth='413px'  
+            //minWidth='413px'  
             position='fixed'
             width='100%'
             zIndex={9999}
+            borderRight='1px solid red'
             top={0}
         >
-            <Flex align='center'>
+            <Flex 
+                align='center'
+            >
                 <Text 
                 fontSize='1.5em' 
                 as='b' color='blue.500'
