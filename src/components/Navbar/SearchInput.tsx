@@ -1,6 +1,7 @@
 import React from 'react';
 import {Flex, InputGroup, InputLeftElement, Input} from '@chakra-ui/react'
 import {PhoneIcon, SearchIcon} from '@chakra-ui/icons'
+import {Show, Hide} from "@chakra-ui/react"
 
 type SearchInputProps = {
     

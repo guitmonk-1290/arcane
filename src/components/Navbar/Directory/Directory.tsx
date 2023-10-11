@@ -44,7 +44,8 @@ const UserMenu: React.FC = () => {
                                     src={directoryState.selectedMenuItem.imageURL}
                                     borderRadius='full'
                                     boxSize='24px'
-                                    mr={2}
+                                    mr={6}
+                                    
                                 />
                             ) : (
                                 <Icon 

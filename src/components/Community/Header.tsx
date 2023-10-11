@@ -1,17 +1,19 @@
 import { Community, communityState } from '@/src/atoms/communitiesAtom';
 import { Box, Button, Flex, Icon, Image, Text } from '@chakra-ui/react';
-import {BiGame} from "react-icons/bi"
+import { BiGame } from "react-icons/bi"
 import React, { useState } from 'react';
 import useCommunityData from '@/src/hooks/useCommunityData';
+import { useMediaQuery } from '@chakra-ui/react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 import { app } from '@/src/firebase/clientApp';
+import { Show, Hide } from "@chakra-ui/react"
 
 type HeaderProps = {
-    communityData: Community    
+    communityData: Community
 };
 
-const Header:React.FC<HeaderProps> = ({ communityData }) => {
+const Header: React.FC<HeaderProps> = ({ communityData }) => {
 
     // banner for the community
 
@@ -19,36 +21,42 @@ const Header:React.FC<HeaderProps> = ({ communityData }) => {
     const isJoined = !!communityStateValue.mySnippets.find(item => item.communityId === communityData.id)
     const banner = communityStateValue.currentCommunity?.bannerURL;
 
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
     return (
-        <Flex 
-            direction='column' 
-            width='100%' 
-            height={banner ? '404px ' : '184px'}
+        <Flex
+            direction='column'
+            width='100%'
+            //height={banner ? '404px' : '184px'}
+            height={ !banner ? '184px' : isMobile[0] ? '304px' : '404px' }
         >
-            <Box 
-                height={banner ? '334px' : '50%'} 
+            <Box
+                height={!banner ? '50%' : isMobile[0] ? '284px' : '334px'}
                 overflow='hidden'
                 bg={banner ? 'blue.400' : 'blue.400'}
             >
                 {
-                    banner && 
-                        <Image 
-                            alt='Community Banner'
-                            width='100%'
-                            src={banner}
-                            height='110%'
-                            //height='684px'
-                        />
+                    banner && (
+                        <>
+                                <Image
+                                    alt='Community Banner'
+                                    width='100%'
+                                    src={banner}
+                                    height='100%'
+                                    //height='684px'
+                                />
+                        </>
+                    )
                 }
             </Box>
-            <Flex 
-                justify='center' 
-                bg='white' 
+            <Flex
+                justify='center'
+                bg='white'
                 flexGrow={1}
             >
                 <Flex width='95%' maxWidth='964px'>
-                    {communityStateValue.currentCommunity?.imageURL ? 
-                        <Image 
+                    {communityStateValue.currentCommunity?.imageURL ?
+                        <Image
                             src={communityStateValue.currentCommunity.imageURL}
                             borderRadius='full'
                             boxSize='66px'
@@ -59,13 +67,13 @@ const Header:React.FC<HeaderProps> = ({ communityData }) => {
                             border='6px solid white'
                         />
                         :
-                        <Icon 
+                        <Icon
                             as={BiGame}
                             position='relative'
                             bg="white"
                             fontSize={64}
                             borderRadius='50px'
-                            top={-5} 
+                            top={-5}
                         />
                     }
                     <Flex m={2}>
@@ -83,19 +91,19 @@ const Header:React.FC<HeaderProps> = ({ communityData }) => {
                                 arc/{communityData.id}
                             </Text>
                         </Flex>
-                        <Button 
+                        <Button
                             variant={isJoined ? 'outline' : 'solid'}
                             height='30px'
                             pr={6} pl={6}
                             isLoading={loading}
-                            onClick={() => {onJoinOrLeaveCommunity(communityData, isJoined)}}
+                            onClick={() => { onJoinOrLeaveCommunity(communityData, isJoined) }}
                             mt={1}
-                            >
-                                {isJoined ? "Joined" : "Join"}
+                        >
+                            {isJoined ? "Joined" : "Join"}
                         </Button>
                     </Flex>
                 </Flex>
-            </Flex>    
+            </Flex>
         </Flex>
     )
 }

@@ -9,6 +9,7 @@ import Directory from './Directory/Directory';
 import useDirectory from '@/src/hooks/useDirectory';
 import { defaultMenuItem } from '@/src/atoms/DirectoryMenuAtom';
 
+
 const Navbar:React.FC = () => {
     const auth = getAuth(app);
     const [user, loading, error] = useAuthState(auth);
@@ -23,7 +24,7 @@ const Navbar:React.FC = () => {
             position='fixed'
             width='100%'
             zIndex={9999}
-            borderRight='1px solid red'
+            //borderRight='1px solid red'
             top={0}
         >
             <Flex 
