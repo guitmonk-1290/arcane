@@ -53,7 +53,7 @@ const Recommendations: React.FC = () => {
                 borderRadius='10px 10px 0px 0px'
                 bgImage="url(/images/topComBan.jpeg)"
                 backgroundSize='cover'
-                bgGradient="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.65)), url('images/topComBan.jpeg')"
+                bgGradient="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.65)), url('/images/topComBan.jpeg')"
             >
                 Top Arcs {loading && <Flex ml={2}><Spinner /></Flex>}
             </Flex>
