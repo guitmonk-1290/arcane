@@ -167,7 +167,7 @@ const PostModal: React.FC<PostModalProps> = ({ user, firestore }) => {
         <>
             {<Modal isOpen={modalState.open} onClose={handleClose}>
                 <ModalOverlay />
-                <ModalContent maxW="46rem" w={{ sm: '36rem', md: '46rem' }}>
+                <ModalContent maxW="56rem" w={{ sm: '46rem', md: '56rem' }} width='100%'>
                     <ModalHeader textAlign='center'>
                         {modalState.view === 'post' && 'Create a post'}
                     </ModalHeader>
