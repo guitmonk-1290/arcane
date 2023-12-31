@@ -1,4 +1,5 @@
-# arcane -> in-Progress...
+# arcane
+### in-development...
 
 ### https://arcane-three.vercel.app/
 
